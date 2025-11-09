@@ -21,4 +21,9 @@ public class AvoidNote : MonoBehaviour
             _avoidNoteSize += _noteSpeed * Time.deltaTime;
         }
     }
+
+    void EnemyAttack()
+    {
+        _gc._playerHP -= _enemyAD;
+    }
 }
