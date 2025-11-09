@@ -3,11 +3,11 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
-    float _playerHP;
+    public float _playerHP;
     [SerializeField]
     float _playerMaxHP;
     [SerializeField]
-    float _enemyHP;
+    public float _enemyHP;
     [SerializeField]
     float _enemyMaxHP;
     void Start()
