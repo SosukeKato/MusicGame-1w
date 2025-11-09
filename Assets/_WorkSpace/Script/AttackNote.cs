@@ -20,4 +20,9 @@ public class AttackNote : MonoBehaviour
             _noteSize += _noteSpeed * Time.deltaTime;
         }
     }
+
+    void PlayerAttack()
+    {
+        _gc._enemyHP -= _playerAD;
+    }
 }
