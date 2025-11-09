@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -18,6 +17,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     float _enemyMaxHP;
 
+    int _combo;
+
     void Awake()
     {
         if (instance == null)
@@ -33,17 +34,25 @@ public class GameController : MonoBehaviour
 
     void PlayerHealth()
     {
-        if (_playerHP > _playerMaxHP)
+        if (_playerHP >= _playerMaxHP)
         {
             _playerHP = _playerMaxHP;
+        }
+        else if (_playerHP <= 0)
+        {
+
         }
     }
 
     void EnemyHealth()
     {
-        if ( _enemyHP > _enemyMaxHP)
+        if ( _enemyHP >= _enemyMaxHP)
         {
             _enemyHP = _enemyMaxHP;
+        }
+        else if(_enemyHP <= 0)
+        {
+
         }
     }
 
