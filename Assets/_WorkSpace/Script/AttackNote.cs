@@ -11,13 +11,14 @@ public class AttackNote : MonoBehaviour
     [SerializeField]
     float _noteMaxSize = 3;
 
-    float _noteSize = 0;
+    float _attackNoteSize = 0;
+
     void Awake()
     {
         _gc = FindAnyObjectByType<GameController>();
-        while (_noteSize <= _noteMaxSize)
+        while (_attackNoteSize <= _noteMaxSize)
         {
-            _noteSize += _noteSpeed * Time.deltaTime;
+            _attackNoteSize += _noteSpeed * Time.deltaTime;
         }
     }
 

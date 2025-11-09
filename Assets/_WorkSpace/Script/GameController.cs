@@ -5,9 +5,10 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public float _playerHP;
     [SerializeField]
-    float _playerMaxHP;
-    [SerializeField]
     public float _enemyHP;
+
+    [SerializeField]
+    float _playerMaxHP;
     [SerializeField]
     float _enemyMaxHP;
     void Start()
