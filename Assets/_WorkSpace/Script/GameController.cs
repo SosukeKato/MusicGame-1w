@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -16,6 +17,11 @@ public class GameController : MonoBehaviour
     float _playerMaxHP;
     [SerializeField]
     float _enemyMaxHP;
+
+    [SerializeField]
+    TextMeshPro _comboText;
+    [SerializeField]
+    TextMeshPro _judgeText;
 
     int _combo;
 
