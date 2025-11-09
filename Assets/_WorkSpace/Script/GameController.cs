@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    AvoidNote _avn;
+    AttackNote _atn;
+
     [SerializeField]
     public float _playerHP;
     [SerializeField]
@@ -11,15 +14,6 @@ public class GameController : MonoBehaviour
     float _playerMaxHP;
     [SerializeField]
     float _enemyMaxHP;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     void PlayerHealth()
     {
@@ -34,6 +28,22 @@ public class GameController : MonoBehaviour
         if ( _enemyHP > _enemyMaxHP)
         {
             _enemyHP = _enemyMaxHP;
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
         }
     }
 }
