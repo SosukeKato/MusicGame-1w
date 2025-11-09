@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    static GameController instance { get; set; }
+
     AvoidNote _avn;
     AttackNote _atn;
 
@@ -14,6 +17,19 @@ public class GameController : MonoBehaviour
     float _playerMaxHP;
     [SerializeField]
     float _enemyMaxHP;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void PlayerHealth()
     {
