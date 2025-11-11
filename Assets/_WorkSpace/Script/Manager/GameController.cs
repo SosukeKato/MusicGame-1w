@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,9 +11,9 @@ public class GameController : MonoBehaviour
     AttackNote _atn;
 
     [SerializeField]
-    public float _playerHP;
+    public float _playerHP = 1000;
     [SerializeField]
-    public float _enemyHP;
+    public float _enemyHP = 1000;
 
     [SerializeField]
     float _playerMaxHP = 1000;
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
     TextMeshProUGUI _comboText;
     TextMeshProUGUI _judgeText;
     TextMeshProUGUI _resultText;
+    List<GameObject> _activeNote;
 
     void Awake()
     {
@@ -77,6 +79,24 @@ public class GameController : MonoBehaviour
             _isEnemyDeath = true;
         }
     }
+
+    #region ノーツのソート処理
+    void AddNote(GameObject note)
+    {
+        _activeNote.Add(note);
+        _activeNote.Sort(NoteAscendingOrder);
+    }
+
+    int NoteAscendingOrder(GameObject a, GameObject b)
+    {
+        return a.transform.position.z.CompareTo(b.transform.position.z);
+    }
+
+    GameObject GetCrosestNote()
+    {
+        return _activeNote.Count > 0 ? _activeNote[0] : null;
+    }
+    #endregion
 
     void Update()
     {
