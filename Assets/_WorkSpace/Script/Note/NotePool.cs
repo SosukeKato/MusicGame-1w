@@ -4,7 +4,6 @@ using UnityEngine;
 public class NotePool : MonoBehaviour
 {
     GameController _gc;
-    Transform _tr;
 
     [SerializeField]
     GameObject _notePrefab;
@@ -18,7 +17,6 @@ public class NotePool : MonoBehaviour
     void Awake()
     {
         _gc = FindAnyObjectByType<GameController>();
-        _tr = GetComponent<Transform>();
         InitializePool();
     }
 
@@ -53,6 +51,20 @@ public class NotePool : MonoBehaviour
         _gc.AddNote(note);
         
         return note;
+    }
+
+    void ReturnNote(GameObject note)
+    {
+        if (note == null)
+        {
+            return;
+        }
+
+        note.SetActive(false);
+        note.transform.SetParent(_parent);
+        _notePool.Enqueue(note);
+
+        _gc.RemoveNote(note);
     }
     void Start()
     {
