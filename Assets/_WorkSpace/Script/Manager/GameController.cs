@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     TextMeshProUGUI _comboText;
     [SerializeField]
     TextMeshProUGUI _judgeText;
+    [SerializeField]
+    TextMeshProUGUI _resultText;
 
     int _combo;
     bool _isPlayerDeath = false; 
