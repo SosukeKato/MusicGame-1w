@@ -44,9 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd36b7a91e964d49b638b9c5c420b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHP: 0
-  _enemyHP: 0
+  _playerHP: 1000
+  _enemyHP: 1000
   _playerMaxHP: 1000
   _enemyMaxHP: 1000
-  _comboText: {fileID: 0}
-  _judgeText: {fileID: 0}
+  _lateGood: 0
+  _fastGood: 10
+  _lateGreat: 2
+  _fastGreat: 8
+  _latePerfect: 4
+  _fastPerfect: 6

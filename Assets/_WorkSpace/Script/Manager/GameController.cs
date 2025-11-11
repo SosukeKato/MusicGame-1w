@@ -21,6 +21,19 @@ public class GameController : MonoBehaviour
     [SerializeField]
     float _enemyMaxHP = 1000;
 
+    [SerializeField]
+    float _lateGood = 0;
+    [SerializeField]
+    float _fastGood = 10;
+    [SerializeField]
+    float _lateGreat = 2;
+    [SerializeField]
+    float _fastGreat = 8;
+    [SerializeField]
+    float _latePerfect = 4;
+    [SerializeField]
+    float _fastPerfect = 6;
+
     int _combo;
     int _score;
     bool _isPlayerDeath = false;
@@ -142,7 +155,27 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
+                if ((_atn._notePositionZ >= _latePerfect) && (_atn._notePositionZ >= _fastPerfect))
+                {
+                    _combo += 1;
+                    _score += 1200;
+                }
+                else if ((_atn._notePositionZ >= _lateGreat) && (_atn._notePositionZ <= _fastGreat))
+                {
+                    _combo += 1;
+                    _score += 1080;
+                }
+                else if ((_atn._notePositionZ >= _lateGood) && (_atn._notePositionZ <= _fastGood))
+                {
+                    _combo = 0;
+                    _score += 600;
+                }
+                else
+                {
+                    _combo = 0;
+                    _score += 230;
+                }
+                _comboText.text = _combo.ToString();
             }
         }
     }
