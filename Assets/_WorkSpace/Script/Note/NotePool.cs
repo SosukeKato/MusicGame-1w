@@ -6,11 +6,7 @@ public class NotePool : MonoBehaviour
     GameController _gc;
 
     [SerializeField]
-    GameObject _avoidNoteLPrefab;
-    [SerializeField]
-    GameObject _avoidNoteRPrefab;
-    [SerializeField]
-    GameObject _attackNotePrefab;
+    public GameObject _NotePrefab;
     [SerializeField]
     int _poolSize;
     [SerializeField]
@@ -31,7 +27,7 @@ public class NotePool : MonoBehaviour
     {
         for (int i = 0; i < _poolSize; i++)
         {
-            GameObject note = Instantiate(_avoidNoteLPrefab);
+            GameObject note = Instantiate(_NotePrefab);
             note.SetActive(false);
             note.transform.SetParent(_parent);
             _notePool.Enqueue(note);
@@ -51,7 +47,7 @@ public class NotePool : MonoBehaviour
         }
         else
         {
-            note = Instantiate(_avoidNoteLPrefab);
+            note = Instantiate(_NotePrefab);
             note.transform.SetParent(_parent);
             Debug.LogWarning("‘«‚è‚È‚©‚Á‚½‚©‚çì‚Á‚½‚â‚Å");
         }
