@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class AudioController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
@@ -25,5 +27,10 @@ public class AudioController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+
     }
 }
