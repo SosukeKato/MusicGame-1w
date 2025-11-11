@@ -14,14 +14,14 @@ public class GameController : MonoBehaviour
     public float _enemyHP;
 
     [SerializeField]
-    float _playerMaxHP;
+    float _playerMaxHP = 1000;
     [SerializeField]
-    float _enemyMaxHP;
+    float _enemyMaxHP = 1000;
 
     [SerializeField]
-    TextMeshPro _comboText;
+    TextMeshProUGUI _comboText;
     [SerializeField]
-    TextMeshPro _judgeText;
+    TextMeshProUGUI _judgeText;
 
     int _combo;
     bool _isPlayerDeath = false; 
