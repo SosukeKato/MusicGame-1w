@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    NotePool _np;
+
+    [SerializeField]
+    Transform _spawnPoint;
     void Start()
     {
-        
+        _np = FindAnyObjectByType<NotePool>();
+        SpawnNote();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// ÉmÅ[ÉcÇê∂ê¨(Active)Ç∑ÇÈèàóù
+    /// </summary>
+    void SpawnNote()
     {
-        
+        GameObject note = _np.GetNote();
+
+        note.transform.position = _spawnPoint.position;
+        note.transform.rotation = Quaternion.identity;
     }
 }

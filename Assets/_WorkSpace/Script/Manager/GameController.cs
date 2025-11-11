@@ -81,22 +81,40 @@ public class GameController : MonoBehaviour
     }
 
     #region ノーツのソート処理
+    /// <summary>
+    /// ActiveなノーツをListに追加する処理
+    /// </summary>
+    /// <param name="note"></param>
     public void AddNote(GameObject note)
     {
         _activeNote.Add(note);
         _activeNote.Sort(NoteAscendingOrder);
     }
 
+    /// <summary>
+    /// Listからfalseになったノーツを削除する処理
+    /// </summary>
+    /// <param name="note"></param>
     public void RemoveNote(GameObject note)
     {
         _activeNote.Remove(note);
     }
 
+    /// <summary>
+    /// Listの中のノーツを昇順に並べる処理
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     int NoteAscendingOrder(GameObject a, GameObject b)
     {
         return a.transform.position.z.CompareTo(b.transform.position.z);
     }
 
+    /// <summary>
+    /// 一番手前にあるノーツを取得する
+    /// </summary>
+    /// <returns></returns>
     GameObject GetCrosestNote()
     {
         return _activeNote.Count > 0 ? _activeNote[0] : null;

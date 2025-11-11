@@ -20,6 +20,9 @@ public class NotePool : MonoBehaviour
         InitializePool();
     }
 
+    /// <summary>
+    /// poolを初期化する処理
+    /// </summary>
     void InitializePool()
     {
         for (int i = 0; i < _poolSize; i++)
@@ -30,8 +33,11 @@ public class NotePool : MonoBehaviour
             _notePool.Enqueue(note);
         }
     }
-
-    GameObject GetNote()
+    /// <summary>
+    /// poolからノーツを取得
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetNote()
     {
         GameObject note;
 
@@ -53,6 +59,10 @@ public class NotePool : MonoBehaviour
         return note;
     }
 
+    /// <summary>
+    /// poolにノーツを返却する処理
+    /// </summary>
+    /// <param name="note"></param>
     void ReturnNote(GameObject note)
     {
         if (note == null)
@@ -65,14 +75,5 @@ public class NotePool : MonoBehaviour
         _notePool.Enqueue(note);
 
         _gc.RemoveNote(note);
-    }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 }
