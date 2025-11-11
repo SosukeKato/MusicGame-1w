@@ -18,6 +18,7 @@ public class NotePool : MonoBehaviour
     void Awake()
     {
         _gc = FindAnyObjectByType<GameController>();
+        _tr = GetComponent<Transform>();
         InitializePool();
     }
 
@@ -30,6 +31,28 @@ public class NotePool : MonoBehaviour
             note.transform.SetParent(_parent);
             _notePool.Enqueue(note);
         }
+    }
+
+    GameObject GetNote()
+    {
+        GameObject note;
+
+        if (_notePool.Count > 0)
+        {
+            note = _notePool.Dequeue();
+        }
+        else
+        {
+            note = Instantiate(_notePrefab);
+            note.transform.SetParent(_parent);
+            Debug.LogWarning("ë´ÇËÇ»Ç©Ç¡ÇΩÇ©ÇÁçÏÇ¡ÇΩÇ‚Ç≈");
+        }
+
+        note.SetActive(true);
+
+        _gc.AddNote(note);
+        
+        return note;
     }
     void Start()
     {
