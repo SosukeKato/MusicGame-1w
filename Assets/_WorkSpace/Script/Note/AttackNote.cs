@@ -3,23 +3,25 @@ using UnityEngine;
 public class AttackNote : MonoBehaviour
 {
     GameController _gc;
+    Transform _tr;
 
     [SerializeField]
     float _playerAD = 200;
     [SerializeField]
     float _noteSpeed;
-    [SerializeField]
-    float _noteMaxSize = 3;
 
-    float _attackNoteSize = 0;
+    Vector3 _moveDirection;
 
     void Awake()
     {
         _gc = FindAnyObjectByType<GameController>();
-        while (_attackNoteSize <= _noteMaxSize)
-        {
-            _attackNoteSize += _noteSpeed * Time.deltaTime;
-        }
+        _tr = GetComponent<Transform>();
+        _moveDirection = new Vector3(0, 0, _noteSpeed * Time.deltaTime * -1);
+    }
+
+    public void NoteMove()
+    {
+        _tr.position += _moveDirection;
     }
 
     void PlayerAttack()
