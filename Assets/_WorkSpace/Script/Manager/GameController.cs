@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
     }
 
     #region ノーツのソート処理
-    void AddNote(GameObject note)
+    public void AddNote(GameObject note)
     {
         _activeNote.Add(note);
         _activeNote.Sort(NoteAscendingOrder);
