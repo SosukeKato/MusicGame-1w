@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 
     AvoidNote _avn;
     AttackNote _atn;
+    NotePool _np;
 
     [SerializeField]
     public float _playerHP = 1000;
@@ -49,6 +50,8 @@ public class GameController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        _np = FindAnyObjectByType<NotePool>();
+
         _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
         _judgeTextObj = GameObject.FindGameObjectWithTag("JudgeText");
         _resultTextObj = GameObject.FindGameObjectWithTag("ResultText");
@@ -124,6 +127,7 @@ public class GameController : MonoBehaviour
     #endregion
     void Update()
     {
+        /*
         if (_activeNote[0])
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -133,9 +137,13 @@ public class GameController : MonoBehaviour
         {
 
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        */
+        if (_activeNote[0] == _np._NotePrefab)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
 
+            }
         }
     }
 }
