@@ -5,7 +5,7 @@ public class AvoidNote : MonoBehaviour
     GameController _gc;
 
     [SerializeField]
-    float _enemyAD;
+    float _enemyAD = 120;
     [SerializeField]
     float _noteSpeed;
     [SerializeField]

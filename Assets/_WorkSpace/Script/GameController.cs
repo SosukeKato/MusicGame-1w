@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     TextMeshPro _judgeText;
 
     int _combo;
+    bool _isPlayerDeath = false; 
+    bool _isEnemyDeath = false;
 
     void Awake()
     {
@@ -46,7 +48,7 @@ public class GameController : MonoBehaviour
         }
         else if (_playerHP <= 0)
         {
-            
+            _isPlayerDeath = true;
         }
     }
 
@@ -58,7 +60,7 @@ public class GameController : MonoBehaviour
         }
         else if(_enemyHP <= 0)
         {
-
+            _isEnemyDeath = true;
         }
     }
 
