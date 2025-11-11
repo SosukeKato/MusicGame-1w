@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -18,16 +19,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     float _enemyMaxHP = 1000;
 
-    [SerializeField]
-    TextMeshProUGUI _comboText;
-    [SerializeField]
-    TextMeshProUGUI _judgeText;
-    [SerializeField]
-    TextMeshProUGUI _resultText;
-
     int _combo;
     bool _isPlayerDeath = false; 
     bool _isEnemyDeath = false;
+    GameObject _comboTextObj;
+    GameObject _judgeTextObj;
+    GameObject _resultTextObj;
+    TextMeshProUGUI _comboText;
+    TextMeshProUGUI _judgeText;
+    TextMeshProUGUI _resultText;
 
     void Awake()
     {
@@ -40,6 +40,18 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
+        _judgeTextObj = GameObject.FindGameObjectWithTag("JudgwText");
+        _resultTextObj = GameObject.FindGameObjectWithTag("ResultText");
+        _comboText = _comboTextObj.GetComponent<TextMeshProUGUI>();
+        _judgeText = _judgeTextObj.GetComponent<TextMeshProUGUI>();
+        _resultText = _resultTextObj.GetComponent<TextMeshProUGUI>();
     }
 
     void PlayerHealth()
