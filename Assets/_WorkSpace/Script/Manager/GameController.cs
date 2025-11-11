@@ -21,7 +21,8 @@ public class GameController : MonoBehaviour
     float _enemyMaxHP = 1000;
 
     int _combo;
-    bool _isPlayerDeath = false; 
+    int _score;
+    bool _isPlayerDeath = false;
     bool _isEnemyDeath = false;
     GameObject _comboTextObj;
     GameObject _judgeTextObj;
@@ -49,7 +50,7 @@ public class GameController : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
-        _judgeTextObj = GameObject.FindGameObjectWithTag("JudgwText");
+        _judgeTextObj = GameObject.FindGameObjectWithTag("JudgeText");
         _resultTextObj = GameObject.FindGameObjectWithTag("ResultText");
         _comboText = _comboTextObj.GetComponent<TextMeshProUGUI>();
         _judgeText = _judgeTextObj.GetComponent<TextMeshProUGUI>();
@@ -70,11 +71,11 @@ public class GameController : MonoBehaviour
 
     void EnemyHealth()
     {
-        if ( _enemyHP >= _enemyMaxHP)
+        if (_enemyHP >= _enemyMaxHP)
         {
             _enemyHP = _enemyMaxHP;
         }
-        else if(_enemyHP <= 0)
+        else if (_enemyHP <= 0)
         {
             _isEnemyDeath = true;
         }
@@ -117,10 +118,10 @@ public class GameController : MonoBehaviour
     /// <returns></returns>
     GameObject GetCrosestNote()
     {
+        //?‚Ítrue‚ÌŽž¶•Ófalse‚ÌŽž‰E•Ó‚ðŽÀs‚·‚é‰‰ŽZŽq
         return _activeNote.Count > 0 ? _activeNote[0] : null;
     }
     #endregion
-
     void Update()
     {
         if (_activeNote[0])
