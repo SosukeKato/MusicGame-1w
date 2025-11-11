@@ -87,6 +87,11 @@ public class GameController : MonoBehaviour
         _activeNote.Sort(NoteAscendingOrder);
     }
 
+    public void RemoveNote(GameObject note)
+    {
+        _activeNote.Remove(note);
+    }
+
     int NoteAscendingOrder(GameObject a, GameObject b)
     {
         return a.transform.position.z.CompareTo(b.transform.position.z);
@@ -100,6 +105,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (_activeNote[0])
         if (Input.GetKeyDown(KeyCode.D))
         {
 
