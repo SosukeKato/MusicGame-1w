@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8028552638699482607}
+  - component: {fileID: -8950116606781250414}
   m_Layer: 0
   m_Name: AttackNote
   m_TagString: Untagged
@@ -33,6 +34,21 @@ Transform:
   - {fileID: 6566745154144413931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8950116606781250414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049477943440806264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23435077199ac5a48aac4d5db7371886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAD: 200
+  _noteSpeed: 1
+  _notePositionZ: 0
 --- !u!1001 &5930658096778958828
 PrefabInstance:
   m_ObjectHideFlags: 0

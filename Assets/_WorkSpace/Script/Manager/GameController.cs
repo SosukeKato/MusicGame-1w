@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     TextMeshProUGUI _comboText;
     TextMeshProUGUI _judgeText;
     TextMeshProUGUI _resultText;
-    List<GameObject> _activeNote;
+    List<GameObject> _activeNote = new();
 
     void Awake()
     {
@@ -65,12 +65,15 @@ public class GameController : MonoBehaviour
     {
         _np = FindAnyObjectByType<NotePool>();
 
-        _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
-        _judgeTextObj = GameObject.FindGameObjectWithTag("JudgeText");
-        _resultTextObj = GameObject.FindGameObjectWithTag("ResultText");
-        _comboText = _comboTextObj.GetComponent<TextMeshProUGUI>();
-        _judgeText = _judgeTextObj.GetComponent<TextMeshProUGUI>();
-        _resultText = _resultTextObj.GetComponent<TextMeshProUGUI>();
+        if (scene.name == "02_Play")
+        {
+            _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
+            _judgeTextObj = GameObject.FindGameObjectWithTag("JudgeText");
+            _resultTextObj = GameObject.FindGameObjectWithTag("ResultText");
+            _comboText = _comboTextObj.GetComponent<TextMeshProUGUI>();
+            _judgeText = _judgeTextObj.GetComponent<TextMeshProUGUI>();
+            _resultText = _resultTextObj.GetComponent<TextMeshProUGUI>();
+        }
     }
 
     void PlayerHealth()
@@ -151,31 +154,35 @@ public class GameController : MonoBehaviour
 
         }
         */
-        if (_activeNote[0] == _np._NotePrefab)
+        if (SceneManager.GetActiveScene().name == "02_Play")
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (_activeNote[0] == _np._NotePrefab)
             {
-                if ((_atn._notePositionZ >= _latePerfect) && (_atn._notePositionZ >= _fastPerfect))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    _combo += 1;
-                    _score += 1200;
+                    _atn = _activeNote[0].GetComponent<AttackNote>();
+                    if ((_atn._notePositionZ >= _latePerfect) && (_atn._notePositionZ >= _fastPerfect))
+                    {
+                        _combo += 1;
+                        _score += 1200;
+                    }
+                    else if ((_atn._notePositionZ >= _lateGreat) && (_atn._notePositionZ <= _fastGreat))
+                    {
+                        _combo += 1;
+                        _score += 1080;
+                    }
+                    else if ((_atn._notePositionZ >= _lateGood) && (_atn._notePositionZ <= _fastGood))
+                    {
+                        _combo = 0;
+                        _score += 600;
+                    }
+                    else
+                    {
+                        _combo = 0;
+                        _score += 230;
+                    }
+                    _comboText.text = _combo.ToString();
                 }
-                else if ((_atn._notePositionZ >= _lateGreat) && (_atn._notePositionZ <= _fastGreat))
-                {
-                    _combo += 1;
-                    _score += 1080;
-                }
-                else if ((_atn._notePositionZ >= _lateGood) && (_atn._notePositionZ <= _fastGood))
-                {
-                    _combo = 0;
-                    _score += 600;
-                }
-                else
-                {
-                    _combo = 0;
-                    _score += 230;
-                }
-                _comboText.text = _combo.ToString();
             }
         }
     }
