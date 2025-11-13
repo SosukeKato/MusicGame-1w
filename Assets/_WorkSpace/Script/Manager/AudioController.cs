@@ -5,18 +5,26 @@ public class AudioController : MonoBehaviour
 {
     static AudioController instance { get;set; }
 
+    [SerializeField]
+    AudioSource _as;
+
+    [SerializeField]
+    AudioClip _titleBGM;
+    [SerializeField]
+    AudioClip _inGameBGM;
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
@@ -31,6 +39,15 @@ public class AudioController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene,LoadSceneMode mode)
     {
-
+        _as.Stop();
+        if (scene.name == "00_Title")
+        {
+            _as.clip = _titleBGM;
+        }
+        if (scene.name == "02_Play")
+        {
+            _as.clip = _inGameBGM;
+        }
+        _as.Play();
     }
 }
