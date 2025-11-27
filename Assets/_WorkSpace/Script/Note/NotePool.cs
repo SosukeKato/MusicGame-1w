@@ -1,18 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class PoolData
+{
+    public GameObject prefab;
+    public int _poolSize;
+}
+
 public class NotePool : MonoBehaviour
 {
     GameController _gc;
 
     [SerializeField]
-    public GameObject _NotePrefab;
-    [SerializeField]
-    int _poolSize;
+    PoolData[] _pdArray;
     [SerializeField]
     Transform _parent;
 
-    Queue<GameObject> _notePool = new Queue<GameObject>();
+    Queue<GameObject>[] _notePoolArray;
 
     void Awake()
     {
@@ -25,29 +31,43 @@ public class NotePool : MonoBehaviour
     /// </summary>
     void InitializePool()
     {
-        for (int i = 0; i < _poolSize; i++)
+        _notePoolArray = new Queue<GameObject>[_pdArray.Length];
+
+        for (int i = 0; i < _pdArray.Length; i++)
         {
-            GameObject note = Instantiate(_NotePrefab);
-            note.SetActive(false);
-            note.transform.SetParent(_parent);
-            _notePool.Enqueue(note);
+            _notePoolArray[i] = new Queue<GameObject>();
+
+            for (int j = 0; j < _pdArray[i]._poolSize; j++)
+            {
+                GameObject note = Instantiate(_pdArray[i].prefab);
+                note.SetActive(false);
+                note.transform.SetParent(_parent);
+                note.name = $"{_pdArray[i].prefab.name}_{j}";
+                _notePoolArray[i].Enqueue(note);
+            }
         }
     }
     /// <summary>
     /// poolからノーツを取得
     /// </summary>
     /// <returns></returns>
-    public GameObject GetNote()
+    public GameObject GetNote(int index)
     {
+        if (index < 0 || index >= _notePoolArray.Length)
+        {
+            Debug.LogError($"インデックス'{index}'が範囲外までいっちゃったやで");
+            return null;
+        }
+
         GameObject note;
 
-        if (_notePool.Count > 0)
+        if (_notePoolArray[index].Count > 0)
         {
-            note = _notePool.Dequeue();
+            note = _notePoolArray[index].Dequeue();
         }
         else
         {
-            note = Instantiate(_NotePrefab);
+            note = Instantiate(_pdArray[index].prefab);
             note.transform.SetParent(_parent);
             Debug.LogWarning("足りなかったから作ったやで");
         }
@@ -63,16 +83,22 @@ public class NotePool : MonoBehaviour
     /// poolにノーツを返却する処理
     /// </summary>
     /// <param name="note"></param>
-    void ReturnNote(GameObject note)
+    void ReturnNote(int index, GameObject note)
     {
         if (note == null)
         {
             return;
         }
 
+        if (index < 0 || index >= _notePoolArray.Length)
+        {
+            Debug.LogError($"インデックス'{index}'が範囲外までいっちゃったやで");
+            return;
+        }
+
         note.SetActive(false);
         note.transform.SetParent(_parent);
-        _notePool.Enqueue(note);
+        _notePoolArray[index].Enqueue(note);
 
         _gc.RemoveNote(note);
     }
