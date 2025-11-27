@@ -6,6 +6,9 @@ public class NoteSpawner : MonoBehaviour
 
     [SerializeField]
     Transform _spawnPoint;
+    [SerializeField]
+    public int _notePoolIndex;
+
     void Start()
     {
         _np = FindAnyObjectByType<NotePool>();
@@ -17,7 +20,7 @@ public class NoteSpawner : MonoBehaviour
     /// </summary>
     void SpawnNote()
     {
-        GameObject note = _np.GetNote();
+        GameObject note = _np.GetNote(_notePoolIndex);
 
         note.transform.position = _spawnPoint.position;
         note.transform.rotation = Quaternion.identity;
