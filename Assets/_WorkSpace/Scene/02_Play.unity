@@ -1269,6 +1269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 0}
+  _notePoolIndex: 0
 --- !u!114 &1664457434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,8 +1282,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482a1bdf5c6f8c141b33761827086332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NotePrefab: {fileID: 0}
-  _poolSize: 0
+  _pdArray:
+  - prefab: {fileID: 8049477943440806264, guid: 509eca539cb6f5d49957081bdc86ab21,
+      type: 3}
+    _poolSize: 0
+  - prefab: {fileID: 9067810369469821988, guid: 6123abd64d6b7314686d62fbb2635ac6,
+      type: 3}
+    _poolSize: 0
+  - prefab: {fileID: 4552166073705097151, guid: 0d7b9bb68e1f1fe40a439cc441b0b391,
+      type: 3}
+    _poolSize: 0
   _parent: {fileID: 0}
 --- !u!1001 &1848211666
 PrefabInstance:
