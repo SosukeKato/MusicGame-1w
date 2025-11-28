@@ -145,17 +145,6 @@ public class GameController : MonoBehaviour
     #endregion
     void Update()
     {
-        /*
-        if (_activeNote[0])
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-
-        }
-        */
         if (SceneManager.GetActiveScene().name == "02_Play")
         {
             if (_activeNote[0] == _pd.prefab)
