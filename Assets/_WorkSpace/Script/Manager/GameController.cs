@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "02_Play")
         {
-            if (_activeNote[0] == _pd.prefab)
+            if (_activeNote[0] == _np._pdArray[0].prefab)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
