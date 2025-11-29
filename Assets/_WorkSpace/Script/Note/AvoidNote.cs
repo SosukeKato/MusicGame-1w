@@ -9,8 +9,8 @@ public class AvoidNote : MonoBehaviour
     float _enemyAD = 120;
     [SerializeField]
     float _noteSpeed;
-
-    Vector3 _moveDirection;
+    [SerializeField]
+    float _moveDirection;
 
     public float _notePositionZ;
 
@@ -19,12 +19,12 @@ public class AvoidNote : MonoBehaviour
         _gc = FindAnyObjectByType<GameController>();
         _tr = GetComponent<Transform>();
         _notePositionZ = transform.position.z;
-        _moveDirection = new Vector3(0, 0, _noteSpeed * Time.deltaTime * -1);
+        _moveDirection = _noteSpeed * Time.deltaTime * -1;
     }
 
     public void NoteMove()
     {
-        _tr.position += _moveDirection;
+        _notePositionZ += _moveDirection;
     }
 
     void EnemyAttack()
