@@ -14,7 +14,7 @@ public class NotePool : MonoBehaviour
     GameController _gc;
 
     [SerializeField]
-    PoolData[] _pdArray;
+    public PoolData[] _pdArray;
     [SerializeField]
     Transform _parent;
 
