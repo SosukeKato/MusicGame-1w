@@ -155,29 +155,29 @@ public class GameController : MonoBehaviour
                     if ((_atn._notePositionZ >= _latePerfect) && (_atn._notePositionZ >= _fastPerfect))
                     {
                         _combo += 1;
-                        _score += 1200;
+                        _score += 1900;
                     }
                     else if ((_atn._notePositionZ >= _lateGreat) && (_atn._notePositionZ <= _fastGreat))
                     {
                         _combo += 1;
-                        _score += 1080;
+                        _score += 1640;
                     }
                     else if ((_atn._notePositionZ >= _lateGood) && (_atn._notePositionZ <= _fastGood))
                     {
                         _combo = 0;
-                        _score += 600;
+                        _score += 910;
                     }
                     else
                     {
                         _combo = 0;
-                        _score += 230;
+                        _score += 470;
                     }
                     _comboText.text = _combo.ToString();
                 }
             }
             if (_activeNote[0] == _np._pdArray[1].prefab)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.D))
                 {
                     _avn = _activeNote[0].GetComponent<AvoidNote>();
                     if ((_avn._notePositionZ >= _latePerfect) && (_avn._notePositionZ >= _fastPerfect))
