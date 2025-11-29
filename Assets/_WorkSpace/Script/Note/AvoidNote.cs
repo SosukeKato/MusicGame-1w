@@ -12,10 +12,13 @@ public class AvoidNote : MonoBehaviour
 
     Vector3 _moveDirection;
 
+    public float _notePositionZ;
+
     void Awake()
     {
         _gc = FindAnyObjectByType<GameController>();
         _tr = GetComponent<Transform>();
+        _notePositionZ = transform.position.z;
         _moveDirection = new Vector3(0, 0, _noteSpeed * Time.deltaTime * -1);
     }
 
