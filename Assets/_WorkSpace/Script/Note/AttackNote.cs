@@ -8,6 +8,8 @@ public class AttackNote : MonoBehaviour
     [SerializeField]
     float _playerAD = 200;
     [SerializeField]
+    float _enemyAD = 120;
+    [SerializeField]
     float _noteSpeed;
     [SerializeField]
     float _moveDirection;
@@ -30,5 +32,10 @@ public class AttackNote : MonoBehaviour
     public void PlayerAttack()
     {
         _gc._enemyHP -= _playerAD;
+    }
+
+    public void EnemyAttack()
+    {
+        _gc._playerHP -= _enemyAD;
     }
 }
