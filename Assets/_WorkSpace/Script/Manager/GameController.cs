@@ -24,6 +24,10 @@ public class GameController : MonoBehaviour
     float _enemyMaxHP = 1000;
 
     [SerializeField]
+    float _lateBad = -2;
+    [SerializeField]
+    float _fastBad = 12;
+    [SerializeField]
     float _lateGood = 0;
     [SerializeField]
     float _fastGood = 10;
