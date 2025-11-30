@@ -27,7 +27,7 @@ public class AvoidNote : MonoBehaviour
         _notePositionZ += _moveDirection;
     }
 
-    void EnemyAttack()
+    public void EnemyAttack()
     {
         _gc._playerHP -= _enemyAD;
     }

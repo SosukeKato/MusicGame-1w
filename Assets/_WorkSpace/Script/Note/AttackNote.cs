@@ -27,7 +27,7 @@ public class AttackNote : MonoBehaviour
         _notePositionZ += _moveDirection;
     }
 
-    void PlayerAttack()
+    public void PlayerAttack()
     {
         _gc._enemyHP -= _playerAD;
     }
