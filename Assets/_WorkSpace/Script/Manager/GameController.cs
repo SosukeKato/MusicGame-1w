@@ -171,7 +171,7 @@ public class GameController : MonoBehaviour
                         _combo = 0;
                         _score += 910;
                     }
-                    else
+                    else if ((_atn._notePositionZ >= _lateBad) && (_atn._notePositionZ <= _fastBad))
                     {
                         _combo = 0;
                         _score += 470;
@@ -199,7 +199,7 @@ public class GameController : MonoBehaviour
                         _combo = 0;
                         _score += 600;
                     }
-                    else
+                    else if ((_avn._notePositionZ >= _lateBad) && (_avn._notePositionZ <= _fastBad))
                     {
                         _combo = 0;
                         _score += 230;
@@ -225,7 +225,7 @@ public class GameController : MonoBehaviour
                     _combo = 0;
                     _score += 600;
                 }
-                else
+                else if ((_avn._notePositionZ >= _lateBad) && (_avn._notePositionZ <= _fastBad))
                 {
                     _combo = 0;
                     _score += 230;
