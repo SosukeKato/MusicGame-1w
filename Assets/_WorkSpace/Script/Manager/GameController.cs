@@ -203,6 +203,31 @@ public class GameController : MonoBehaviour
                     _comboText.text = _combo.ToString();
                 }
             }
+            if (_activeNote[0] == _np._pdArray[2].prefab)
+            {
+                _avn = _activeNote[0].GetComponent<AvoidNote>();
+                if ((_avn._notePositionZ >= _latePerfect) && (_avn._notePositionZ >= _fastPerfect))
+                {
+                    _combo += 1;
+                    _score += 1200;
+                }
+                else if ((_avn._notePositionZ >= _lateGreat) && (_avn._notePositionZ <= _fastGreat))
+                {
+                    _combo += 1;
+                    _score += 1080;
+                }
+                else if ((_avn._notePositionZ >= _lateGood) && (_avn._notePositionZ <= _fastGood))
+                {
+                    _combo = 0;
+                    _score += 600;
+                }
+                else
+                {
+                    _combo = 0;
+                    _score += 230;
+                }
+                _comboText.text = _combo.ToString();
+            }
         }
     }
 }
