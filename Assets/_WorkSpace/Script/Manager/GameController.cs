@@ -153,6 +153,7 @@ public class GameController : MonoBehaviour
         {
             if (_activeNote[0] == _np._pdArray[0].prefab)
             {
+                GetCrosestNote();
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     _atn = _activeNote[0].GetComponent<AttackNote>();
@@ -189,6 +190,7 @@ public class GameController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.D))
                 {
+                    GetCrosestNote();
                     _avn = _activeNote[0].GetComponent<AvoidNote>();
                     if ((_avn._notePositionZ >= _latePerfect) && (_avn._notePositionZ >= _fastPerfect))
                     {
@@ -223,6 +225,7 @@ public class GameController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.J))
                 {
+                    GetCrosestNote();
                     _avn = _activeNote[0].GetComponent<AvoidNote>();
                     if ((_avn._notePositionZ >= _latePerfect) && (_avn._notePositionZ >= _fastPerfect))
                     {
