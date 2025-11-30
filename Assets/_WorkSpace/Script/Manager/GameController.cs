@@ -221,34 +221,37 @@ public class GameController : MonoBehaviour
             }
             if (_activeNote[0] == _np._pdArray[2].prefab)
             {
-                _avn = _activeNote[0].GetComponent<AvoidNote>();
-                if ((_avn._notePositionZ >= _latePerfect) && (_avn._notePositionZ >= _fastPerfect))
+                if (Input.GetKeyDown(KeyCode.J))
                 {
-                    _combo += 1;
-                    _score += 1200;
+                    _avn = _activeNote[0].GetComponent<AvoidNote>();
+                    if ((_avn._notePositionZ >= _latePerfect) && (_avn._notePositionZ >= _fastPerfect))
+                    {
+                        _combo += 1;
+                        _score += 1200;
+                    }
+                    else if ((_avn._notePositionZ >= _lateGreat) && (_avn._notePositionZ <= _fastGreat))
+                    {
+                        _combo += 1;
+                        _score += 1080;
+                    }
+                    else if ((_avn._notePositionZ >= _lateGood) && (_avn._notePositionZ <= _fastGood))
+                    {
+                        _combo = 0;
+                        _score += 600;
+                    }
+                    else if ((_avn._notePositionZ >= _lateBad) && (_avn._notePositionZ <= _fastBad))
+                    {
+                        _combo = 0;
+                        _score += 230;
+                    }
+                    else
+                    {
+                        _combo = 0;
+                        _avn.EnemyAttack();
+                        PlayerHealth();
+                    }
+                    _comboText.text = _combo.ToString();
                 }
-                else if ((_avn._notePositionZ >= _lateGreat) && (_avn._notePositionZ <= _fastGreat))
-                {
-                    _combo += 1;
-                    _score += 1080;
-                }
-                else if ((_avn._notePositionZ >= _lateGood) && (_avn._notePositionZ <= _fastGood))
-                {
-                    _combo = 0;
-                    _score += 600;
-                }
-                else if ((_avn._notePositionZ >= _lateBad) && (_avn._notePositionZ <= _fastBad))
-                {
-                    _combo = 0;
-                    _score += 230;
-                }
-                else
-                {
-                    _combo = 0;
-                    _avn.EnemyAttack();
-                    PlayerHealth();
-                }
-                _comboText.text = _combo.ToString();
             }
         }
     }
