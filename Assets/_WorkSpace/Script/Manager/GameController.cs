@@ -176,6 +176,12 @@ public class GameController : MonoBehaviour
                         _combo = 0;
                         _score += 470;
                     }
+                    else
+                    {
+                        _combo = 0;
+                        _atn.EnemyAttack();
+                        PlayerHealth();
+                    }
                     _comboText.text = _combo.ToString();
                 }
             }
@@ -204,6 +210,12 @@ public class GameController : MonoBehaviour
                         _combo = 0;
                         _score += 230;
                     }
+                    else
+                    {
+                        _combo = 0;
+                        _avn.EnemyAttack();
+                        PlayerHealth();
+                    }
                     _comboText.text = _combo.ToString();
                 }
             }
@@ -229,6 +241,12 @@ public class GameController : MonoBehaviour
                 {
                     _combo = 0;
                     _score += 230;
+                }
+                else
+                {
+                    _combo = 0;
+                    _avn.EnemyAttack();
+                    PlayerHealth();
                 }
                 _comboText.text = _combo.ToString();
             }
