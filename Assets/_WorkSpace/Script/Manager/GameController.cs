@@ -161,21 +161,25 @@ public class GameController : MonoBehaviour
                     {
                         _combo += 1;
                         _score += 1900;
+                        _atn.PlayerAttack();
                     }
                     else if ((_atn._notePositionZ >= _lateGreat) && (_atn._notePositionZ <= _fastGreat))
                     {
                         _combo += 1;
                         _score += 1640;
+                        _atn.PlayerAttack();
                     }
                     else if ((_atn._notePositionZ >= _lateGood) && (_atn._notePositionZ <= _fastGood))
                     {
                         _combo = 0;
                         _score += 910;
+                        _atn.PlayerAttack();
                     }
                     else if ((_atn._notePositionZ >= _lateBad) && (_atn._notePositionZ <= _fastBad))
                     {
                         _combo = 0;
                         _score += 470;
+                        _atn.PlayerAttack();
                     }
                     else
                     {
