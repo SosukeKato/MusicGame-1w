@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     NotePool _np;
     PoolData _pd;
     NoteSpawner _ns;
+    AudioController _ac;
 
     [SerializeField]
     public float _playerHP = 1000;
@@ -69,6 +70,7 @@ public class GameController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        _ac = FindAnyObjectByType<AudioController>();
         if (scene.name == "02_Play")
         {
             _np = FindAnyObjectByType<NotePool>();
