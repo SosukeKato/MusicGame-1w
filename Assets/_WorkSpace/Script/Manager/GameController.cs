@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
     int _score;
     bool _isPlayerDeath = false;
     bool _isEnemyDeath = false;
+    AudioClip _gameMusic;
     GameObject _comboTextObj;
     GameObject _judgeTextObj;
     GameObject _resultTextObj;
@@ -73,6 +74,7 @@ public class GameController : MonoBehaviour
         _ac = FindAnyObjectByType<AudioController>();
         if (scene.name == "02_Play")
         {
+            _gameMusic = _ac._inGameBGM;
             _np = FindAnyObjectByType<NotePool>();
             _ns = FindAnyObjectByType<NoteSpawner>();
             _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
