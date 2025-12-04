@@ -11,7 +11,7 @@ public class AudioController : MonoBehaviour
     [SerializeField]
     AudioClip _titleBGM;
     [SerializeField]
-    AudioClip _inGameBGM;
+    public AudioClip _inGameBGM;
 
     void Awake()
     {
