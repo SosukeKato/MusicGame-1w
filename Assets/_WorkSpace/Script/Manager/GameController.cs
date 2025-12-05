@@ -75,6 +75,8 @@ public class GameController : MonoBehaviour
         if (scene.name == "02_Play")
         {
             _gameMusic = _ac._inGameBGM;
+            var data = new float[_gameMusic.channels * _gameMusic.samples];
+            _gameMusic.GetData(data, 0);
             _np = FindAnyObjectByType<NotePool>();
             _ns = FindAnyObjectByType<NoteSpawner>();
             _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
