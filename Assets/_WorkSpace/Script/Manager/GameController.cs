@@ -75,7 +75,17 @@ public class GameController : MonoBehaviour
         if (scene.name == "02_Play")
         {
             _gameMusic = _ac._inGameBGM;
+            //オーディオクリップの全サンプルデータを変数に保存
+            //clip.channels* clip.samples
+
+            //clip.channels：チャンネル数（モノラル = 1、ステレオ = 2）
+            //clip.samples：1チャンネルあたりのサンプル数
+            //掛け算することで全オーディオデータの総サンプル数を計算
+
+            //例えば、ステレオ（2チャンネル）で44100Hz、1秒のオーディオなら 2 * 44100 = 88200 要素の配列が作成されます。
             var data = new float[_gameMusic.channels * _gameMusic.samples];
+            //オーディオクリップから実際のサンプルデータを配列に格納
+            //これにより後でtimeSamplesの位置から必要な区間のデータを取り出せる
             _gameMusic.GetData(data, 0);
             _np = FindAnyObjectByType<NotePool>();
             _ns = FindAnyObjectByType<NoteSpawner>();

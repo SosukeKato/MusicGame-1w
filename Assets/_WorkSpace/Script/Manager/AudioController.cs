@@ -6,7 +6,7 @@ public class AudioController : MonoBehaviour
     static AudioController instance { get;set; }
 
     [SerializeField]
-    AudioSource _as;
+    public AudioSource _as;
 
     [SerializeField]
     AudioClip _titleBGM;
