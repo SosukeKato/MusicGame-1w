@@ -18,7 +18,7 @@ public class NoteSpawner : MonoBehaviour
     /// <summary>
     /// ƒm[ƒc‚ğ¶¬(Active)‚·‚éˆ—
     /// </summary>
-    void SpawnNote()
+    public void SpawnNote()
     {
         GameObject note = _np.GetNote(_notePoolIndex);
 

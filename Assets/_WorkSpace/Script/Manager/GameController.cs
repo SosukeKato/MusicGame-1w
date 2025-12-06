@@ -171,12 +171,18 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region
+    /// <summary>
+    /// 波形を取得して処理をするために必要な数値を保存する処理
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="monoData"></param>
     public void Prepare(AudioSource source, float[] monoData)
     {
         this._gameMusicSource = source;
         this._data = monoData;
 
         float fps = Mathf.Max(60 , 1 / Time.deltaTime);
+        //1フレームで読み込むサンプル数を計算
         this._sampleStep = (int)(_gameMusic.frequency / fps);
     }
     #endregion
