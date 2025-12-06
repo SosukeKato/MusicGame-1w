@@ -43,8 +43,11 @@ public class GameController : MonoBehaviour
 
     int _combo;
     int _score;
+    int _sampleStep;
+    float[] _data;
     bool _isPlayerDeath = false;
     bool _isEnemyDeath = false;
+    AudioSource _gameMusicSource;
     AudioClip _gameMusic;
     GameObject _comboTextObj;
     GameObject _judgeTextObj;
@@ -75,6 +78,7 @@ public class GameController : MonoBehaviour
         if (scene.name == "02_Play")
         {
             _gameMusic = _ac._inGameBGM;
+            _gameMusicSource = _ac._as;
             //オーディオクリップの全サンプルデータを変数に保存
             //clip.channels* clip.samples
 
@@ -83,10 +87,10 @@ public class GameController : MonoBehaviour
             //掛け算することで全オーディオデータの総サンプル数を計算
 
             //例えば、ステレオ（2チャンネル）で44100Hz、1秒のオーディオなら 2 * 44100 = 88200 要素の配列が作成されます。
-            var data = new float[_gameMusic.channels * _gameMusic.samples];
+            _data = new float[_gameMusic.channels * _gameMusic.samples];
             //オーディオクリップから実際のサンプルデータを配列に格納
             //これにより後でtimeSamplesの位置から必要な区間のデータを取り出せる
-            _gameMusic.GetData(data, 0);
+            _gameMusic.GetData(_data, 0);
             _np = FindAnyObjectByType<NotePool>();
             _ns = FindAnyObjectByType<NoteSpawner>();
             _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
@@ -95,6 +99,8 @@ public class GameController : MonoBehaviour
             _comboText = _comboTextObj.GetComponent<TextMeshProUGUI>();
             _judgeText = _judgeTextObj.GetComponent<TextMeshProUGUI>();
             _resultText = _resultTextObj.GetComponent<TextMeshProUGUI>();
+
+            Prepare(_gameMusicSource, _data);
         }
     }
 
@@ -163,6 +169,18 @@ public class GameController : MonoBehaviour
         return _activeNote.Count > 0 ? _activeNote[0] : null;
     }
     #endregion
+
+    #region
+    public void Prepare(AudioSource source, float[] monoData)
+    {
+        this._gameMusicSource = source;
+        this._data = monoData;
+
+        float fps = Mathf.Max(60 , 1 / Time.deltaTime);
+        this._sampleStep = (int)(_gameMusic.frequency / fps);
+    }
+    #endregion
+
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "02_Play")
