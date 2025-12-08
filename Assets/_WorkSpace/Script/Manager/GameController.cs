@@ -216,13 +216,26 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        #region
+        #region ƒm[ƒc‚Ì¶¬ˆ—
         if (_gameMusicSource.isPlaying && _gameMusicSource.timeSamples < _data.Length)
         {
             int startIndex = _gameMusicSource.timeSamples;
             int endIndex = Mathf.Min(_gameMusicSource.timeSamples + _sampleStep, _data.Length);
 
             DetectVolumeLevel(_data, startIndex, endIndex);
+
+            if (DetectVolumeLevel(_data, startIndex, endIndex) > 1)
+            {
+
+            }
+            else if (DetectVolumeLevel(_data, startIndex, endIndex) > 0.8)
+            {
+
+            }
+            else if (DetectVolumeLevel(_data, startIndex, endIndex) > 0.6)
+            {
+                
+            }
         }
         #endregion
 
