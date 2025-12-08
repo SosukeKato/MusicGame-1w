@@ -40,6 +40,12 @@ public class GameController : MonoBehaviour
     float _latePerfect = 4;
     [SerializeField]
     float _fastPerfect = 6;
+    [SerializeField]
+    float _spawnAtn;
+    [SerializeField]
+    float _spawnAvnL;
+    [SerializeField]
+    float _spawnAvnR;
 
     int _combo;
     int _score;
@@ -224,18 +230,20 @@ public class GameController : MonoBehaviour
 
             DetectVolumeLevel(_data, startIndex, endIndex);
 
-            if (DetectVolumeLevel(_data, startIndex, endIndex) > 1)
+            if (DetectVolumeLevel(_data, startIndex, endIndex) > _spawnAtn)
             {
+                _ns._notePoolIndex = 0;
+            }
+            else if (DetectVolumeLevel(_data, startIndex, endIndex) > _spawnAvnL)
+            {
+                _ns._notePoolIndex = 1;
+            }
+            else if (DetectVolumeLevel(_data, startIndex, endIndex) > _spawnAvnR)
+            {
+                _ns._notePoolIndex = 2;
+            }
 
-            }
-            else if (DetectVolumeLevel(_data, startIndex, endIndex) > 0.8)
-            {
-
-            }
-            else if (DetectVolumeLevel(_data, startIndex, endIndex) > 0.6)
-            {
-                
-            }
+            _ns.SpawnNote();
         }
         #endregion
 
