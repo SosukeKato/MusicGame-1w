@@ -192,8 +192,8 @@ public class GameController : MonoBehaviour
         #region
         if (_gameMusicSource.isPlaying && _gameMusicSource.timeSamples < _data.Length)
         {
-            var startIndex = _gameMusicSource.timeSamples;
-            var endIndex = Mathf.Min(_gameMusicSource.timeSamples + _sampleStep, _data.Length);
+            int startIndex = _gameMusicSource.timeSamples;
+            int endIndex = Mathf.Min(_gameMusicSource.timeSamples + _sampleStep, _data.Length);
         }
         #endregion
 
