@@ -189,6 +189,14 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        #region
+        if (_gameMusicSource.isPlaying && _gameMusicSource.timeSamples < _data.Length)
+        {
+
+        }
+        #endregion
+
+
         if (SceneManager.GetActiveScene().name == "02_Play")
         {
             if (_activeNote[0] == _np._pdArray[0].prefab)
