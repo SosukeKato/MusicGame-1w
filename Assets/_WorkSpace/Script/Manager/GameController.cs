@@ -185,6 +185,33 @@ public class GameController : MonoBehaviour
         //1フレームで読み込むサンプル数を計算
         this._sampleStep = (int)(_gameMusic.frequency / fps);
     }
+
+    /// <summary>
+    /// startからendの音量の差分を取得するメソッド
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    float DetectVolumeLevel(float[] data, int start, int end)
+    {
+        float max = 0f;
+        float min = 0f;
+
+        for (int i = start; i < end; i++)
+        {
+            if (max < data[i])
+            {
+                max = data[i];
+            }
+            if (min > data[i])
+            {
+                min = data[i];
+            }
+        }
+
+        return max - min;
+    }
     #endregion
 
     void Update()
@@ -194,10 +221,12 @@ public class GameController : MonoBehaviour
         {
             int startIndex = _gameMusicSource.timeSamples;
             int endIndex = Mathf.Min(_gameMusicSource.timeSamples + _sampleStep, _data.Length);
+
+            DetectVolumeLevel(_data, startIndex, endIndex);
         }
         #endregion
 
-
+        #region 判定処理
         if (SceneManager.GetActiveScene().name == "02_Play")
         {
             if (_activeNote[0] == _np._pdArray[0].prefab)
@@ -310,5 +339,6 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+        #endregion
     }
 }

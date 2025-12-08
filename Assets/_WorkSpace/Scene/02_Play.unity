@@ -1268,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241bff0932560f947943101e2a21c007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 0}
+  _spawnPoint: {fileID: 1664457432}
   _notePoolIndex: 0
 --- !u!114 &1664457434
 MonoBehaviour:
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   - prefab: {fileID: 4552166073705097151, guid: 0d7b9bb68e1f1fe40a439cc441b0b391,
       type: 3}
     _poolSize: 0
-  _parent: {fileID: 0}
+  _parent: {fileID: 1285395641}
 --- !u!1001 &1848211666
 PrefabInstance:
   m_ObjectHideFlags: 0
