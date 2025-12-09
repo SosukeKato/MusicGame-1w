@@ -230,7 +230,7 @@ public class GameController : MonoBehaviour
 
             float volume = DetectVolumeLevel(_data, startIndex, endIndex);
 
-            int index = -1;
+            int index = 0;
             if (volume > _spawnAtn)
             {
                 index = 0;
