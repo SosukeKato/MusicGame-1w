@@ -12,15 +12,15 @@ public class NoteSpawner : MonoBehaviour
     void Start()
     {
         _np = FindAnyObjectByType<NotePool>();
-        SpawnNote();
+        SpawnNote(_notePoolIndex);
     }
 
     /// <summary>
     /// ÉmÅ[ÉcÇê∂ê¨(Active)Ç∑ÇÈèàóù
     /// </summary>
-    public void SpawnNote()
+    public void SpawnNote(int index)
     {
-        GameObject note = _np.GetNote(_notePoolIndex);
+        GameObject note = _np.GetNote(index);
 
         note.transform.position = _spawnPoint.position;
         note.transform.rotation = Quaternion.identity;

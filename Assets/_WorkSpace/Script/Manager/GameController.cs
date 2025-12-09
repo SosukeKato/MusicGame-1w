@@ -228,22 +228,23 @@ public class GameController : MonoBehaviour
             int startIndex = _gameMusicSource.timeSamples;
             int endIndex = Mathf.Min(_gameMusicSource.timeSamples + _sampleStep, _data.Length);
 
-            DetectVolumeLevel(_data, startIndex, endIndex);
+            float volume = DetectVolumeLevel(_data, startIndex, endIndex);
 
-            if (DetectVolumeLevel(_data, startIndex, endIndex) > _spawnAtn)
+            int index = -1;
+            if (volume > _spawnAtn)
             {
-                _ns._notePoolIndex = 0;
+                index = 0;
             }
-            else if (DetectVolumeLevel(_data, startIndex, endIndex) > _spawnAvnL)
+            else if (volume > _spawnAvnL)
             {
-                _ns._notePoolIndex = 1;
+                index = 1;
             }
-            else if (DetectVolumeLevel(_data, startIndex, endIndex) > _spawnAvnR)
+            else if (volume > _spawnAvnR)
             {
-                _ns._notePoolIndex = 2;
+                index = 2;
             }
 
-            _ns.SpawnNote();
+            _ns.SpawnNote(index);
         }
         #endregion
 
