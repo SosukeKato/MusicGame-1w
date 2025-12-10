@@ -21,7 +21,12 @@ public class AttackNote : MonoBehaviour
         _gc = FindAnyObjectByType<GameController>();
         _tr = GetComponent<Transform>();
         _notePositionZ = transform.position.z;
-        _moveDirection = _noteSpeed * Time.deltaTime * -1;
+        _moveDirection = _noteSpeed * Time.deltaTime;
+    }
+
+    void Update()
+    {
+        NoteMove();
     }
 
     public void NoteMove()
