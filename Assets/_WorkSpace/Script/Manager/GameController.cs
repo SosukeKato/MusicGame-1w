@@ -63,6 +63,8 @@ public class GameController : MonoBehaviour
     TextMeshProUGUI _resultText;
     List<GameObject> _activeNote = new();
 
+    const string JudgeTextTagName = "JudgeText";
+
     void Awake()
     {
         if (instance == null)
@@ -100,7 +102,7 @@ public class GameController : MonoBehaviour
             _np = FindAnyObjectByType<NotePool>();
             _ns = FindAnyObjectByType<NoteSpawner>();
             _comboTextObj = GameObject.FindGameObjectWithTag("ComboText");
-            _judgeTextObj = GameObject.FindGameObjectWithTag("JudgeText");
+            _judgeTextObj = GameObject.FindGameObjectWithTag(JudgeTextTagName);
             _resultTextObj = GameObject.FindGameObjectWithTag("ResultText");
             _comboText = _comboTextObj.GetComponent<TextMeshProUGUI>();
             _judgeText = _judgeTextObj.GetComponent<TextMeshProUGUI>();

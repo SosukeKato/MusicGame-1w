@@ -83,7 +83,7 @@ public class NotePool : MonoBehaviour
     /// pool‚Éƒm[ƒc‚ğ•Ô‹p‚·‚éˆ—
     /// </summary>
     /// <param name="note"></param>
-    void ReturnNote(int index, GameObject note)
+    public void ReturnNote(int index, GameObject note)
     {
         if (note == null)
         {
