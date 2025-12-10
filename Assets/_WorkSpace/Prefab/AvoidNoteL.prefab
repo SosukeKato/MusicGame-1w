@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAD: 120
-  _noteSpeed: 0
+  _noteSpeed: 100
   _moveDirection: 0
   _notePositionZ: 0
 --- !u!1001 &309140433202085048

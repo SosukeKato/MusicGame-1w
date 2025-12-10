@@ -29,7 +29,8 @@ public class AvoidNote : MonoBehaviour
 
     public void NoteMove()
     {
-        _notePositionZ += _moveDirection;
+        _tr.position += new Vector3(0, 0, -1 * _noteSpeed * Time.deltaTime);
+        _notePositionZ = _tr.position.z;
     }
 
     public void EnemyAttack()

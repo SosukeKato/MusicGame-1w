@@ -47,7 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAD: 200
-  _noteSpeed: 1
+  _enemyAD: 120
+  _noteSpeed: 100
+  _moveDirection: 0
   _notePositionZ: 0
 --- !u!1001 &5930658096778958828
 PrefabInstance:
